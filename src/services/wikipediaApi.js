@@ -12,8 +12,6 @@ export const getPopularArticles = async ()=>{
     let response = await fetch(`https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia.org/all-access/${year}/${month}/all-days`);
     let data = await response.json();
 
-    
-    console.log(data);
     return data.items[0].articles.map(x=>x.article.replaceAll("_"," "));
 }
 

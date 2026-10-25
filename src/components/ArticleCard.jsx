@@ -1,17 +1,29 @@
 import "../App.css"
 
-export const ArticleCard = ({type,article})=>{
-    
+export const ArticleCard = ({type,article,loading})=>{
+    const textIds = {
+        start: "startText",
+        curr: "currText",
+        end: "endText"
+    }
+    const titleIds = {
+        start: "startTitle",
+        curr: "currTitle",
+        end: "endTitle"
+    }
+    const descriptionIds = {
+        start: "startDescription",
+        curr: "currDescription",
+        end: "endDescription"
+    }
+
     return(
-        <div className={type}>
-
-            <div id={type.concat("Text")} className="Text">
-            <div id={type.concat("Title")}>{type}</div>
-            <div id={type.concat("Description")}></div>
-        </div>
-        <img src="" />
-
+        <div id={type} className="cards" >
+            <img src={article?.thumbnail?.source || ""} alt={article?.title || ""} />
+            <div id={titleIds[type]} className="Text">
+                <div id={titleIds[type]} className="titles"> {article?.title || ""}  </div>
+                <div id={descriptionIds[type]}> {article?.description} </div>
+            </div>
         </div>
     )
-    
 }

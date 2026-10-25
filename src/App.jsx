@@ -1,16 +1,14 @@
 import './App.css'
 import { ArticleCard } from './components/ArticleCard'
-
+import { Game } from './components/Game'
 
 function App() {
   
 
   return (
-    <>
-      <ArticleCard type="start" ></ArticleCard>
-      <ArticleCard type="curr"></ArticleCard>
-      <ArticleCard type="end"></ArticleCard>
-    </>
+    <div className='container'>
+      <Game></Game>
+    </div>
   )
 }
 
