@@ -2,7 +2,7 @@ import { useState } from "react";
 import { getPopularArticles, getRandomValidArticle } from "../services/wikipediaApi";
 import { ArticleCard } from "./ArticleCard";
 import { useEffect } from "react";
-
+import { showRelLinks } from "../services/wikipediaApi";
 
 export const Game = ()=>{
     const [startArticle, setStartArticle] = useState(null);
@@ -14,6 +14,7 @@ export const Game = ()=>{
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
 
+    const [relatedArticles, setRelatedArticles] = useState([]);
 
     useEffect(()=>{
         const setEndpoints = async()=>{
@@ -41,12 +42,20 @@ export const Game = ()=>{
         setEndpoints();
     },[])
     
+    const handleShowLinks = async()=>{
+        const relArticles = await showRelLinks(currArticle.title);
+        setRelatedArticles(relArticles);
+
+    }
+    const handleArticleOnClick = (article)=>{
+        setCurrArticle(article);
+    }
 
     return(
         <div>
-            <ArticleCard type="start" article={startArticle} loading={loading}></ArticleCard>
-            <ArticleCard type="curr" article={currArticle} loading={loading}></ArticleCard>
-            <ArticleCard type="end" article={targetArticle} loading={loading}></ArticleCard>
+            <ArticleCard type="start" article={startArticle} loading={loading} handleArticleOnClick={handleArticleOnClick}></ArticleCard>
+            <ArticleCard type="curr" article={currArticle} loading={loading} handleArticleOnClick={handleArticleOnClick}></ArticleCard>
+            <ArticleCard type="end" article={targetArticle} loading={loading} handleArticleOnClick={handleArticleOnClick}></ArticleCard>
         </div>
     )
 }

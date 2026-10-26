@@ -1,6 +1,7 @@
 import "../App.css"
+import { ShowRelLinksBtn } from "./ShowRelLinksBtn"
 
-export const ArticleCard = ({type,article,loading})=>{
+export const ArticleCard = ({type,article,loading,handleArticleOnClick})=>{
     const textIds = {
         start: "startText",
         curr: "currText",
@@ -24,6 +25,12 @@ export const ArticleCard = ({type,article,loading})=>{
                 <div id={titleIds[type]} className="titles"> {article?.title || ""}  </div>
                 <div id={descriptionIds[type]}> {article?.description} </div>
             </div>
+            {type=="curr" &&
+                <>
+                <ShowRelLinksBtn title={article?.title} handleArticleOnClick={handleArticleOnClick}></ShowRelLinksBtn> 
+                <div id="currRelLinks"></div>
+                </>
+            }
         </div>
     )
 }

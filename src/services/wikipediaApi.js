@@ -61,7 +61,7 @@ export async function hasEnoughBackLinks(title, minLinks=30) {
 
 
 
-let getRelLinks = async (currTitle) =>{
+export let getRelLinks = async (currTitle) =>{
     let response = await fetch(`https://en.wikipedia.org/w/api.php?action=query&prop=links&titles=${encodeURIComponent(currTitle)}&plnamespace=0&pllimit=max&format=json&origin=*`);
     let relLinks = await response.json();
 
@@ -70,9 +70,9 @@ let getRelLinks = async (currTitle) =>{
 }
 
 
-export let showRelLinks = async ()=>{
+export let showRelLinks = async (title)=>{
     // currRelLinks.replaceChildren();
-    let relLinks = await getRelLinks();
+    let relLinks = await getRelLinks(title);
 
     let pageid = Object.values(relLinks.query.pages)[0];
     // console.log(relLinks);
