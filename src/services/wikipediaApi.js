@@ -84,7 +84,7 @@ export let showRelLinks = async (title)=>{
 
   
     titles = titles.slice(0,20);
-    titleString = titles.join("|");
+    const titleString = titles.join("|");
     let response = await fetch(`https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&prop=pageimages|pageterms&titles=${encodeURIComponent(titleString)}&pilimit=30&piprop=thumbnail&pithumbsize=300&wbptterms=description&redirects=&origin=*`);
     let data = await response.json();
 

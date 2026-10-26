@@ -1,7 +1,9 @@
+import { useState } from "react"
 import "../App.css"
 import { ShowRelLinksBtn } from "./ShowRelLinksBtn"
 
 export const ArticleCard = ({type,article,loading,handleArticleOnClick})=>{
+    const [title, setTitle] = useState(article?.title);
     const textIds = {
         start: "startText",
         curr: "currText",
@@ -28,7 +30,6 @@ export const ArticleCard = ({type,article,loading,handleArticleOnClick})=>{
             {type=="curr" &&
                 <>
                 <ShowRelLinksBtn title={article?.title} handleArticleOnClick={handleArticleOnClick}></ShowRelLinksBtn> 
-                <div id="currRelLinks"></div>
                 </>
             }
         </div>

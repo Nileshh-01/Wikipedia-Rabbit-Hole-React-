@@ -1,18 +1,40 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { showRelLinks } from "../services/wikipediaApi"
 
 export const ShowRelLinksBtn = ({title,handleArticleOnClick})=>{
 
     const [relatedArticles, setRelatedArticles] = useState([]);
+    const [isOpen, setIsopen] = useState(false);
+
+
 
     const show = async()=>{
-        const articles = await showRelLinks(title);
-        setRelatedArticles(articles);
+        
+        
     }
 
+    useEffect(() => {
+        if (!isOpen || !title) return;
+
+        let cancelled = false;
+
+        const fetchLinks = async () => {
+            const articles = await showRelLinks(title);
+
+            if (!cancelled) {
+                setRelatedArticles(articles);
+            }
+        };
+
+        fetchLinks();
+
+        return () => {
+            cancelled = true;
+        };
+    }, [title, isOpen]);
     return(
         <>
-            <button onClick={show}>Related Links</button>
+            <button onClick={()=>setIsopen((prev)=>!prev)} id="showRelLinksBtn">Related Links</button>
 
             <div id="currRelLinks">{
                 relatedArticles.map((article, index) => {
