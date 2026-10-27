@@ -1,19 +1,52 @@
 const n = 12;
 
-export const getPopularArticles = async ()=>{
+// export const getPopularArticles = async ()=>{
 
+//     const date = new Date();
+//     date.setDate(1);
+//     date.setMonth(date.getMonth() - 1);
+
+//     const year = date.getFullYear();
+//     const month = String(date.getMonth() + 1).padStart(2, "0");
+
+//     let response = await fetch(`https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia.org/all-access/${year}/${month}/all-days`);
+//     let data = await response.json();
+
+//     return data.items[0].articles.map(x=>x.article.replaceAll("_"," "));
+// }
+
+
+export const getPopularArticles = async () => {
     const date = new Date();
+
     date.setDate(1);
     date.setMonth(date.getMonth() - 1);
 
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
+    // 6 previous months
+    for (let i = 0; i < 6; i++) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
 
-    let response = await fetch(`https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia.org/all-access/${year}/${month}/all-days`);
-    let data = await response.json();
+        const response = await fetch(`https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia.org/all-access/${year}/${month}/all-days`);
 
-    return data.items[0].articles.map(x=>x.article.replaceAll("_"," "));
-}
+        if (response.ok) {
+            const data = await response.json();
+            const articles = data.items?.[0]?.articles;
+
+            if (articles?.length) {
+                return articles.map(article =>
+                    article.article.replaceAll("_", " ")
+                );
+            }
+        }
+
+        // Try previous month
+        date.setMonth(date.getMonth() - 1);
+        console.log(date.getMonth());
+    }
+
+    throw new Error("Could not fetch popular Wikipedia articles.");
+};
 
 
 
