@@ -434,3 +434,105 @@ body {
     background: rgba(255, 255, 255, 0.852);
     color: black;
 }
+
+
+
+/* VISITED ARTICLES*/
+
+#visitedWrapper.collapsed {
+    width: 0;
+}
+
+#visitedWrapper.collapsed #visited {
+    display: none;
+}
+
+#visitedHeading {
+    position: relative;
+    margin-bottom: 1%;
+    top: 3%;
+    right: 40%;
+
+    font-family: Georgia, serif;
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+
+    color: rgba(255, 255, 255, 0.746);
+    text-align: center;
+}
+
+
+#visitedWrapper {
+    width: 40%;
+    height: 16%;
+
+    position: absolute;
+    left: 32%;
+    bottom: 3%;
+
+    z-index: 10;
+}
+
+#visited {
+    width: 100%;
+    height: 100%;
+
+    background: rgba(20, 20, 20, 0.65);
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 13px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+#visitedItems {
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 8px;
+    padding: 2%;
+}
+
+.visitedItem {
+    height: 80%;
+    aspect-ratio: 1;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+    flex-shrink: 0;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    cursor: pointer;
+    transition: 0.4s ease;
+}
+
+.visitedItem:hover{
+    transform: scale(1.05);
+}
+
+#collapseVisited {
+    position: absolute;
+
+    right: -3%;
+    top: -15%;
+
+    width: 6%;
+    aspect-ratio: 1;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+
+    background: rgba(20, 20, 20, 0.85);
+    color: white;
+
+    cursor: pointer;
+
+    z-index: 20;
+}

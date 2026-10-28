@@ -51,9 +51,7 @@ export const getPopularArticles = async () => {
 
 
 export async function getArticleSummary(title) {
-    const response = await fetch(
-        `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`
-    );
+    const response = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`);
 
     if (!response.ok) return null;
 

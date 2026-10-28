@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { showRelLinks } from "../services/wikipediaApi";
 import { HUD } from "./HUD";
 import { GameStatus } from "./GameStatus";
+import { VisitedArticles } from "./VisitedArticles";
 
 export const Game = ()=>{
     const [startArticle, setStartArticle] = useState(null);
@@ -49,6 +50,7 @@ export const Game = ()=>{
     const handleArticleOnClick = (article)=>{
         setCurrArticle(article);
         setRabbitHoleDepth(prev => prev + 1);
+        setVisitedArticles([...visitedArticles,article]);
     }
 
     const allowedSteps = {
@@ -65,7 +67,6 @@ export const Game = ()=>{
         setRabbitHoleDepth(0);
         setCurrArticle(startArticle);
         setVisitedArticles(startArticle ? [startArticle] : []);
-        setRelatedArticles([]);
     }
 
     const handleRestart = ()=>{
@@ -100,6 +101,7 @@ export const Game = ()=>{
             <ArticleCard type="start" article={startArticle} loading={loading} handleArticleOnClick={handleArticleOnClick}></ArticleCard>
             <ArticleCard type="curr" article={currArticle} loading={loading} handleArticleOnClick={handleArticleOnClick}></ArticleCard>
             <ArticleCard type="end" article={targetArticle} loading={loading} handleArticleOnClick={handleArticleOnClick}></ArticleCard>
+            <VisitedArticles visitedArticles={visitedArticles}></VisitedArticles>
         </div>
     )
 }
