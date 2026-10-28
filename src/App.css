@@ -168,6 +168,8 @@ body {
     backdrop-filter: blur(8px);
 }
 
+
+/*  RELATED LINKS   */
 #showRelLinksBtn {
     position: absolute;
     bottom: 5%;
@@ -231,9 +233,6 @@ body {
     /* transition: 0.15s ease-in; */
 }
 
-.relLinkBtns:hover {
-    
-}
 
 /* .relLinkBtns:hover {
     transform: translate(-50%, -50%) scale(1.5);
@@ -303,3 +302,135 @@ body {
     border-color: rgb(255, 255, 255);
 }
 
+
+
+
+
+
+/*    HUD    */
+
+.rabbitHole{
+    display: flex; 
+    font-size: 1.1rem;
+    justify-content: start;
+}
+
+#gameInfo {
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    width: 52%;
+
+    display: flex;
+    align-items: center;
+    gap: 1%;
+}
+
+#gameMode,#gameStatus {
+    background: rgba(25, 30, 30, 0.78);
+    backdrop-filter: blur(5px);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 14px;
+
+    color: white;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+#gameMode {
+    display: flex;
+    align-items: center;
+    gap: 3%;
+    padding: 2% 3%;
+    width: 48%;
+
+    padding: 12px 16px;
+}
+
+#gameModeText {
+    font-size: 0.95rem;
+    font-weight: 550;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+#difficulty {
+    display: flex;
+    gap: 6px;
+}
+
+.difficultyBtns {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    color: white;
+
+    padding: 7px 12px;
+    border-radius: 8px;
+
+    cursor: pointer;
+    transition: 0.8s ease;
+}
+
+.difficultyBtns:hover {
+    background: rgba(255, 255, 255, 0.852);
+    color: black;
+}
+
+#gameStatus {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 12px 16px;
+}
+
+.depthInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.depthInfo span {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+}
+
+.depthInfo strong {
+    font-size: 1rem;
+}
+
+#depthBar {
+    width: 150px;
+    height: 5px;
+
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#depthProgress {
+    width: 0%;
+    height: 100%;
+    background: #4fd1c5;
+    transition: width 0.5s ease;
+}
+
+#restart {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    color: white;
+
+    padding: 7px 12px;
+    border-radius: 8px;
+
+    cursor: pointer;
+    transition: 0.7s ease;
+}
+
+#restart:hover {
+    background: rgba(255, 255, 255, 0.852);
+    color: black;
+}

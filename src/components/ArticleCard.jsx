@@ -22,7 +22,12 @@ export const ArticleCard = ({type,article,loading,handleArticleOnClick})=>{
 
     return(
         <div id={type} className="cards" >
-            <img src={article?.thumbnail?.source || ""} alt={article?.title || ""} />
+            {article?.thumbnail?.source && (
+                <img
+                    src={article.thumbnail.source}
+                    alt={article.title}
+                />
+                )}
             <div id={titleIds[type]} className="Text">
                 <div id={titleIds[type]} className="titles"> {article?.title || ""}  </div>
                 <div id={descriptionIds[type]}> {article?.description} </div>

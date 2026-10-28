@@ -3,6 +3,8 @@ import { getPopularArticles, getRandomValidArticle } from "../services/wikipedia
 import { ArticleCard } from "./ArticleCard";
 import { useEffect } from "react";
 import { showRelLinks } from "../services/wikipediaApi";
+import { HUD } from "./HUD";
+
 
 export const Game = ()=>{
     const [startArticle, setStartArticle] = useState(null);
@@ -15,6 +17,8 @@ export const Game = ()=>{
     const [error, setError] = useState("");
 
     const [relatedArticles, setRelatedArticles] = useState([]);
+
+    const [currDifficulty, setCurrDifficulty] = useState("easy");
 
     useEffect(()=>{
         const setEndpoints = async()=>{
@@ -51,8 +55,26 @@ export const Game = ()=>{
         setCurrArticle(article);
     }
 
+    const allowedSteps = {
+        easy: 30,
+        medium: 20,
+        hard: 10
+    }
+    const allowedDepth = allowedSteps[currDifficulty];
+    const handleDifficultyChange = (difficulty)=>{
+
+        if (difficulty === currDifficulty) return;
+
+        setCurrDifficulty(difficulty);
+        setRabbitHoleDepth(0);
+        setCurrArticle(startArticle);
+        setVisitedArticles(startArticle ? [startArticle] : []);
+        setRelatedArticles([]);
+    }
+
     return(
         <div>
+            <HUD currDifficulty={currDifficulty} handleDifficultyChange={handleDifficultyChange}></HUD>
             <ArticleCard type="start" article={startArticle} loading={loading} handleArticleOnClick={handleArticleOnClick}></ArticleCard>
             <ArticleCard type="curr" article={currArticle} loading={loading} handleArticleOnClick={handleArticleOnClick}></ArticleCard>
             <ArticleCard type="end" article={targetArticle} loading={loading} handleArticleOnClick={handleArticleOnClick}></ArticleCard>
