@@ -4,7 +4,7 @@ import { ArticleCard } from "./ArticleCard";
 import { useEffect } from "react";
 import { showRelLinks } from "../services/wikipediaApi";
 import { HUD } from "./HUD";
-
+import { GameStatus } from "./GameStatus";
 
 export const Game = ()=>{
     const [startArticle, setStartArticle] = useState(null);
@@ -46,13 +46,9 @@ export const Game = ()=>{
         setEndpoints();
     },[])
     
-    const handleShowLinks = async()=>{
-        const relArticles = await showRelLinks(currArticle.title);
-        setRelatedArticles(relArticles);
-
-    }
     const handleArticleOnClick = (article)=>{
         setCurrArticle(article);
+        setRabbitHoleDepth(prev => prev + 1);
     }
 
     const allowedSteps = {
@@ -72,9 +68,35 @@ export const Game = ()=>{
         setRelatedArticles([]);
     }
 
+    const handleRestart = ()=>{
+        const setEndpoints = async()=>{
+            setLoading(true);
+            setError("");
+            try{
+                const titles = await getPopularArticles();
+                const start = await getRandomValidArticle(titles);
+                const end = await getRandomValidArticle(titles,start.title,true);
+
+                setStartArticle(start);
+                setCurrArticle(start);
+                setTargetArticle(end);
+                setVisitedArticles([start]);
+                setRabbitHoleDepth(0);
+
+            } catch (error) {
+                console.error("Error loading articles:", error);
+                setError("Failed to load articles. Please try again.");
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        setEndpoints();
+    }
+
     return(
         <div>
-            <HUD currDifficulty={currDifficulty} handleDifficultyChange={handleDifficultyChange}></HUD>
+            <HUD currDifficulty={currDifficulty} handleDifficultyChange={handleDifficultyChange} rabbitHoleDepth={rabbitHoleDepth} allowedDepth={allowedDepth} handleRestart={handleRestart}></HUD>
             <ArticleCard type="start" article={startArticle} loading={loading} handleArticleOnClick={handleArticleOnClick}></ArticleCard>
             <ArticleCard type="curr" article={currArticle} loading={loading} handleArticleOnClick={handleArticleOnClick}></ArticleCard>
             <ArticleCard type="end" article={targetArticle} loading={loading} handleArticleOnClick={handleArticleOnClick}></ArticleCard>
