@@ -102,7 +102,6 @@ export let getRelLinks = async (currTitle) =>{
 
 
 export let showRelLinks = async (title)=>{
-    // currRelLinks.replaceChildren();
     let relLinks = await getRelLinks(title);
 
     let pageid = Object.values(relLinks.query.pages)[0];
@@ -123,5 +122,10 @@ export let showRelLinks = async (title)=>{
     let validTitles = data.query.pages.filter(article => article.thumbnail?.source && article.terms?.description?.[0]);
     validTitles = validTitles.slice(0, n);
 
-    return validTitles;
+    return validTitles.map((article)=>(
+        {
+            ...article,
+            description: article.terms.description[0]
+        }
+    ));
 }
