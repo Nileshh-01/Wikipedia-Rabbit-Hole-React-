@@ -56,27 +56,10 @@ export const ShowRelLinksBtn = ({title,handleArticleOnClick})=>{
 
              {isOpen && (
                 <div id="currRelLinks">
-                    <svg className="linkLines" aria-hidden="true">
-                        {relatedArticles.map((article, index) => {
-                            const angle =(2 * Math.PI * index) /relatedArticles.length;
-
-                            const x = 300 * Math.cos(angle);
-                            const y = 260 * Math.sin(angle);
-
-                            return (
-                                <line key={article.title} x1="0" y1="0" x2={x} y2={y} pathLength="1" className="drawLine"
-                                    style={{
-                                        animationDelay: `${index * 50}ms`
-                                    }}
-                                />
-                            );
-                        })}
-                    </svg>
-
                     {relatedArticles.map((article, index) => {
                         const angle = (2 * Math.PI * index) / relatedArticles.length;
 
-                        const x = 300 * Math.cos(angle);
+                        const x = 320 * Math.cos(angle);
                         const y = 260 * Math.sin(angle);
 
                         return (
@@ -88,7 +71,7 @@ export const ShowRelLinksBtn = ({title,handleArticleOnClick})=>{
                                     top: `${y}px`,
                                     transitionDelay:
                                         phase === "buttons"
-                                            ? `${index * 60}ms`
+                                            ? `${index * 80}ms`
                                             : "0ms"
                                 }}
                                 onClick={() => handleArticleOnClick(article)}
@@ -97,6 +80,23 @@ export const ShowRelLinksBtn = ({title,handleArticleOnClick})=>{
                             </button>
                         );
                     })}
+
+                    <svg className="linkLines" aria-hidden="true">
+                        {relatedArticles.map((article, index) => {
+                            const angle =(2 * Math.PI * index) /relatedArticles.length;
+
+                            const x = 310 * Math.cos(angle);
+                            const y = 260 * Math.sin(angle);
+
+                            return (
+                                <line key={article.title} x1="0" y1="0" x2={x} y2={y} pathLength="1" className="drawLine"
+                                    style={{
+                                        animationDelay: `${index * 120}ms`
+                                    }}
+                                />
+                            );
+                        })}
+                    </svg>
                 </div>
             )}
         </>

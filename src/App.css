@@ -87,6 +87,7 @@ body{
   box-shadow: 0 15px 45px rgba(0, 0, 0, 0.881), 0px 0px 10px 4px rgba(0, 140, 255, 0.516);
 
   background-color: #e4ddcf;
+  isolation: isolate;
 }
 
 
@@ -109,6 +110,7 @@ body{
 
 #curr img{
     border-radius: 14px 14px 0 0;
+    z-index: 2;
 }
 
 
@@ -136,6 +138,9 @@ body{
     overflow: hidden;
 }
 
+#curr .Text {
+    z-index: 2;
+}
 
 
 #currTitle,
@@ -184,7 +189,23 @@ body{
 }
 
 #curr::before {
+    display: block;
     content: "CURRENT ARTICLE";
+    font-family: "Rebeqa-Medium",serif;
+    /* font-size: 1rem; */
+
+}
+
+#curr::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    background: #e4ddcf;
+    border-radius: 14px;
+
+    pointer-events: none;
 }
 
 #endPoint::before {
@@ -205,8 +226,8 @@ body{
 
     border-radius: 999px;
 
-    font-size: 0.65rem;
-    font-weight: 700;
+    font-size: 1rem;
+    /* font-weight: 700; */
     letter-spacing: 0.08em;
 
     background: rgba(20, 20, 20, 0.7);
@@ -223,7 +244,7 @@ body{
     position: absolute;
     bottom: 5%;
     right: 5%;
-    z-index: 10;
+    z-index: 5;
 
     width: 35%;
     height: 12%;
@@ -288,7 +309,7 @@ body{
     cursor: pointer;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
     font-family: "Rebeqa-medium",serif;
-
+    z-index: 1;
 
     /* transform: translate(-50%, -50%); */
 
@@ -314,17 +335,17 @@ body{
     height: 1px;
     overflow: visible;
     pointer-events: none;
-    z-index: -10;
+    z-index: 0;
 }
 
 .drawLine {
     stroke: rgba(106, 59, 25, 0.9);
-    stroke-width: 2;
+    stroke-width: 3;
     stroke-linecap: round;
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
 
-    animation: drawConnection 0.6s ease-out forwards;
+    animation: drawConnection 0.85s ease-out forwards;
 }
 
 @keyframes drawConnection {
