@@ -11,6 +11,42 @@ body {
     overflow-y: hidden;
 }
 
+body{
+  background-image: url("/public/Bg_wikipedia.jpeg");
+  background-size: cover;
+}
+
+
+@font-face {
+    font-family: "Rebeqa-Light";
+    src: url("./assets/fonts/Rebeqa-Light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Rebeqa-Medium";
+    src: url("./assets/fonts/Rebeqa-Medium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Rebeqa-ExtraBold";
+    src: url("./assets/fonts/Rebeqa-ExtraBold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Kastemo";
+    src: url("./assets/fonts/Kastemo.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "Runiga";
+    src: url("./assets/fonts/Runiga.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "Zasila";
+    src: url("./assets/fonts/Zaslia.otf") format("opentype");
+}
+
 .container{
     position: relative;
     display: flex;
@@ -38,6 +74,7 @@ body {
 
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.255);
     overflow: hidden;
+    background-color: #e4ddcf;
 }
 
 
@@ -47,10 +84,9 @@ body {
   height: 52%;
   overflow: visible;
 
-    box-shadow:
-        0 15px 45px rgba(0, 0, 0, 0.881),
-        0px 0px 10px 4px rgba(0, 140, 255, 0.516);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.881), 0px 0px 10px 4px rgba(0, 140, 255, 0.516);
 
+  background-color: #e4ddcf;
 }
 
 
@@ -105,22 +141,33 @@ body {
 #currTitle,
 #startTitle,
 #endTitle {
-    font-size: clamp(1rem, 1.4vw, 1.45rem);
-    font-weight: 600;
+    font-family: "Kastemo",serif;
+    /* font-family: "Rebeqa-ExtraBold",serif; */
+    /* font-family: "Runiga",serif; */
+    /* font-family: "Zasila",serif; */
+
+    font-size: clamp(1.3rem, 1.4vw, 1.45rem);
+    font-weight: 1000;
     line-height: 1.15;
 
     margin-bottom: 8px;
 
-    color: #171717;
+    color: #531111;
+}
+
+#startTitle,
+#endTitle {
+    font-size: clamp(1.1rem, 1.4vw, 1.45rem);
 }
 
 
 #currDescription,
 #startDescription,
 #endDescription {
-    font-size: clamp(0.7rem, 0.9vw, 0.9rem);
+    font-family: "Rebeqa-medium";
+    font-size: clamp(1.3rem, 0.9vw, 0.9rem);
     line-height: 1.4;
-    color: #555;
+    color: #3b3b3b;
 }
 
 #currDescription{
@@ -171,6 +218,8 @@ body {
 
 /*  RELATED LINKS   */
 #showRelLinksBtn {
+    font-family: "Runiga",serif;
+
     position: absolute;
     bottom: 5%;
     right: 5%;
@@ -184,20 +233,28 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.25);
     border-radius: 10px;
 
-    background: rgba(255, 255, 255, 0.85);
-    color: #222;
-
     font-size: 0.75rem;
     font-weight: 600;
 
     cursor: pointer;
-    transition: 0.2s ease-in;
+    transition: 0.3s ease;
+    /* background-color: #77621c81;
+    color: #222; */
+
+    /* background: #69411a; 
+    background: #452403; */
+    background: #512b04;
+    color: rgb(247, 230, 230);
 }
 
 #showRelLinksBtn:hover {
-    background: #0c487b;
-    color: white;
-    transform: translateY(-2px);
+    /* background: #512b04;
+    color: rgb(255, 255, 255); */
+
+    background-color: #753e13f8;
+    color: #fdf4f4;
+
+    transform: scale(1.05);
 }
 
 
@@ -219,14 +276,19 @@ body {
     padding: 8px 14px;
 
     border: 1px solid rgba(0, 0, 0, 0.18);
+    /* border: 1px solid rgb(255, 255, 255); */
     border-radius: 999px;
 
     background: rgba(250, 249, 245, 0.92);
     color: #222;
-    font-size: 0.8rem;
+    /* background-color: #7e2210; */
+    /* color: white; */
+    font-size: 1.25rem;
 
     cursor: pointer;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    font-family: "Rebeqa-medium",serif;
+
 
     /* transform: translate(-50%, -50%); */
 
@@ -256,13 +318,13 @@ body {
 }
 
 .drawLine {
-    stroke: rgba(79, 209, 197, 0.9);
+    stroke: rgba(106, 59, 25, 0.9);
     stroke-width: 2;
     stroke-linecap: round;
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
 
-    animation: drawConnection 0.65s ease-out forwards;
+    animation: drawConnection 0.6s ease-out forwards;
 }
 
 @keyframes drawConnection {
@@ -297,7 +359,8 @@ body {
     background: #1f2937;
     color: white;
     transform: translate(-50%, -50%) scale(1.3);
-    background: #0c487b;
+    background: #4c1a06;
+    /* background: #0c487b; */
     color: white;
     border-color: rgb(255, 255, 255);
 }
@@ -344,16 +407,15 @@ body {
     align-items: center;
     gap: 3%;
     padding: 2% 3%;
-    width: 48%;
+    width: 56%;
 
     padding: 12px 16px;
 }
 
 #gameModeText {
     font-size: 0.95rem;
-    font-weight: 550;
     letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-family: "Zasila";
 }
 
 #difficulty {
@@ -366,11 +428,12 @@ body {
     background: transparent;
     color: white;
 
-    padding: 7px 12px;
+    padding: 8px 12px;
     border-radius: 8px;
 
     cursor: pointer;
     transition: 0.8s ease;
+    font-family: "Kastemo";
 }
 
 .difficultyBtns:hover {
@@ -387,6 +450,8 @@ body {
 }
 
 .depthInfo {
+    font-family: "Zasila";
+    font-weight: 900;
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -414,16 +479,19 @@ body {
 #depthProgress {
     width: 0%;
     height: 100%;
-    background: #4fd1c5;
+    background: #b3de19;
+    /* background: #85d14f; */
+    /* background: #4fd1c5; */
     transition: width 0.5s ease;
 }
 
 #restart {
+    font-family: "Kastemo";
     border: 1px solid rgba(255, 255, 255, 0.2);
     background: transparent;
     color: white;
 
-    padding: 7px 12px;
+    padding: 9px 12px;
     border-radius: 8px;
 
     cursor: pointer;
