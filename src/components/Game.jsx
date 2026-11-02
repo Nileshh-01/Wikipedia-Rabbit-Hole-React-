@@ -6,6 +6,8 @@ import { showRelLinks } from "../services/wikipediaApi";
 import { HUD } from "./HUD";
 import { GameStatus } from "./GameStatus";
 import { VisitedArticles } from "./VisitedArticles";
+import { GameResultPopup } from "../GameResultPopUp";
+
 
 export const Game = ()=>{
     const [startArticle, setStartArticle] = useState(null);
@@ -20,6 +22,8 @@ export const Game = ()=>{
     const [relatedArticles, setRelatedArticles] = useState([]);
 
     const [currDifficulty, setCurrDifficulty] = useState("easy");
+
+    const [gameStatus, setGameStatus] = useState("playing");
 
     useEffect(()=>{
         const setEndpoints = async()=>{
@@ -51,6 +55,12 @@ export const Game = ()=>{
         setCurrArticle(article);
         setRabbitHoleDepth(prev => prev + 1);
         setVisitedArticles([...visitedArticles,article]);
+
+        if (article.title === targetArticle.title) {
+            setGameStatus("won");
+        } else if (nextDepth >= allowedDepth) {
+            setGameStatus("lost");
+        }
     }
 
     const allowedSteps = {
@@ -83,6 +93,7 @@ export const Game = ()=>{
                 setTargetArticle(end);
                 setVisitedArticles([start]);
                 setRabbitHoleDepth(0);
+                setGameStatus("playing");
 
             } catch (error) {
                 console.error("Error loading articles:", error);
@@ -102,6 +113,7 @@ export const Game = ()=>{
             <ArticleCard type="curr" article={currArticle} loading={loading} handleArticleOnClick={handleArticleOnClick}></ArticleCard>
             <ArticleCard type="end" article={targetArticle} loading={loading} handleArticleOnClick={handleArticleOnClick}></ArticleCard>
             <VisitedArticles visitedArticles={visitedArticles}></VisitedArticles>
+            <GameResultPopup gameStatus={gameStatus} rabbitHoleDepth={rabbitHoleDepth} handleRestart={handleRestart}/>
         </div>
     )
 }

@@ -84,7 +84,7 @@ body{
   height: 52%;
   overflow: visible;
 
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.881), 0px 0px 10px 4px rgba(0, 140, 255, 0.516);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.881);
 
   background-color: #e4ddcf;
   isolation: isolate;
@@ -340,7 +340,7 @@ body{
 
 .drawLine {
     stroke: rgba(106, 59, 25, 0.9);
-    stroke-width: 3;
+    stroke-width: 2;
     stroke-linecap: round;
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
