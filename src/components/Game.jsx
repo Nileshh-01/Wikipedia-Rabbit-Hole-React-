@@ -51,17 +51,22 @@ export const Game = ()=>{
         setEndpoints();
     },[])
     
-    const handleArticleOnClick = (article)=>{
+    const handleArticleOnClick = (article) => {
+        if (gameStatus !== "playing") return;
+
+        const nextDepth = rabbitHoleDepth + 1;
+
         setCurrArticle(article);
-        setRabbitHoleDepth(prev => prev + 1);
-        setVisitedArticles([...visitedArticles,article]);
+        setRabbitHoleDepth(nextDepth);
+
+        setVisitedArticles(prev => [...prev, article]);
 
         if (article.title === targetArticle.title) {
             setGameStatus("won");
         } else if (nextDepth >= allowedDepth) {
             setGameStatus("lost");
         }
-    }
+    };
 
     const allowedSteps = {
         easy: 30,
