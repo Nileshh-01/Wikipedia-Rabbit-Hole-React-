@@ -6,7 +6,7 @@ import { showRelLinks } from "../services/wikipediaApi";
 import { HUD } from "./HUD";
 import { GameStatus } from "./GameStatus";
 import { VisitedArticles } from "./VisitedArticles";
-import { GameResultPopup } from "../GameResultPopUp";
+import { GameResultPopup } from "./GameResultPopup";
 
 
 export const Game = ()=>{

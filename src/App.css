@@ -660,15 +660,15 @@ body{
     padding: 3%;
     text-align: center;
 
-    background: rgba(20, 23, 30, 0.94);
+    background: rgba(119, 44, 27, 0.94);
     border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 18px;
 
-    box-shadow: 0 0 35px rgba(0, 80, 255, 0.12);
+    box-shadow: 0 0 35px rgba(2, 2, 2, 0.769);
 
     backdrop-filter: blur(18px);
 
-    animation: popupIn 0.4s ease-out;
+    animation: popupIn 0.3s ease-out;
 }
 
 @keyframes popupIn{
@@ -687,7 +687,7 @@ body{
 #lostBox h2,
 #wonBox h2 {
     margin: 0 0 4%;
-    font-family: Georgia, serif;
+    font-family: Runiga, serif;
     font-size: 2.2rem;
     font-weight: 500;
     letter-spacing: -0.5px;
@@ -699,9 +699,10 @@ body{
 #lostBox p,
 #wonBox p {
     margin: 0 0 7%;
+    font-family: Rebeqa-Medium, serif;
 
-    font-family: Arial, sans-serif;
-    font-size: 0.95rem;
+    /* font-family: Arial, sans-serif; */
+    font-size: 1.45rem;
     line-height: 1.5;
 
     color: rgba(255, 255, 255, 0.65);
@@ -717,8 +718,10 @@ body{
     background: rgba(255, 255, 255, 0.08);
     color: white;
 
-    font-size: 0.9rem;
+    font-size: 1.3rem;
+    font-family: Rebeqa-Medium, serif;
     font-weight: 500;
+    /* letter-spacing: 0.05rem; */
 
     cursor: pointer;
 
