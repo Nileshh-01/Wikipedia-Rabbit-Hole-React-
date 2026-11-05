@@ -39,12 +39,12 @@ body{
 
 @font-face {
     font-family: "Runiga";
-    src: url("./assets/fonts/Runiga.otf") format("opentype");
+    src: url("./assets/Fonts/Runiga.otf") format("opentype");
 }
 
 @font-face {
     font-family: "Zasila";
-    src: url("./assets/fonts/Zaslia.otf") format("opentype");
+    src: url("./assets/Fonts/Zaslia.otf") format("opentype");
 }
 
 .container{
