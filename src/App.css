@@ -19,22 +19,22 @@ body{
 
 @font-face {
     font-family: "Rebeqa-Light";
-    src: url("./assets/fonts/Rebeqa-Light.ttf") format("truetype");
+    src: url("./assets/Fonts/Rebeqa-Light.ttf") format("truetype");
 }
 
 @font-face {
     font-family: "Rebeqa-Medium";
-    src: url("./assets/fonts/Rebeqa-Medium.ttf") format("truetype");
+    src: url("./assets/Fonts/Rebeqa-Medium.ttf") format("truetype");
 }
 
 @font-face {
     font-family: "Rebeqa-ExtraBold";
-    src: url("./assets/fonts/Rebeqa-ExtraBold.ttf") format("truetype");
+    src: url("./assets/Fonts/Rebeqa-ExtraBold.ttf") format("truetype");
 }
 
 @font-face {
     font-family: "Kastemo";
-    src: url("./assets/fonts/Kastemo.otf") format("opentype");
+    src: url("./assets/Fonts/Kastemo.otf") format("opentype");
 }
 
 @font-face {
