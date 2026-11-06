@@ -69,7 +69,7 @@ export const ShowRelLinksBtn = ({title,handleArticleOnClick})=>{
                                 style={{
                                     left: `${x}px`,
                                     top: `${y}px`,
-                                    transitionDelay:
+                                    animationDelay:
                                         phase === "buttons"
                                             ? `${index * 80}ms`
                                             : "0ms"
