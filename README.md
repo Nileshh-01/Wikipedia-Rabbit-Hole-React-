@@ -1,19 +1,78 @@
-# React + Vite
+# Wikipedia Rabbit Hole
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Wikipedia Rabbit Hole is a browser game built with React, JavaScript, and CSS. The idea came from the way you can start reading one Wikipedia article and somehow end up on a completely unrelated topic after following links for a while.
 
-Currently, two official plugins are available:
+I wanted to turn that experience into a game.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+You get a starting article and a target article. Your job is to reach the target by clicking only the related Wikipedia articles shown on the screen. You have a limited number of moves, depending on the difficulty you choose.
 
-## React Compiler
+## How to Play
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+1. The game randomly selects two articles from popular Wikipedia pages.
+2. One becomes your starting article and the other becomes your target.
+3. Click the **Related Links** button to see articles connected to your current article.
+4. Choose one of the related articles to move forward.
+5. Keep following links until you reach the target.
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+You win if you reach the target within the allowed number of moves. Otherwise, you lose when you reach the maximum depth.
 
-## Expanding the ESLint configuration
+## Difficulty Levels
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Difficulty | Maximum Depth |
+|---|---:|
+| Easy | 30 |
+| Medium | 20 |
+| Hard | 10 |
+
+## Features
+
+- Randomly selected starting and target articles.
+- Article titles, descriptions, and thumbnails fetched from Wikipedia.
+- Related articles generated dynamically based on the current article.
+- Animated connection lines between the current article and related links.
+- Related-link buttons with fade-in and hover animations.
+- Visited article history with horizontal scrolling.
+- Ability to change difficulty during a game.
+- Rabbit hole depth counter and progress bar.
+- Win and loss popups.
+- Restart functionality.
+- Background and card styling that change the overall look of the game.
+
+## How the Data Is Retrieved
+
+The project uses Wikimedia's APIs to get the articles and information needed for the game.
+
+### Wikimedia Pageviews API
+
+Used to get a list of popular Wikipedia articles. These are used to randomly select the starting and target articles.
+
+API: `https://wikimedia.org/api/rest_v1/metrics/pageviews/top/`
+
+### Wikipedia REST API
+
+Used to retrieve article summaries, thumbnails, and descriptions.
+
+API: `https://en.wikipedia.org/api/rest_v1/page/summary/`
+
+### MediaWiki Action API
+
+Used to retrieve links from the current article and get additional information about those related articles.
+
+API: `https://en.wikipedia.org/w/api.php`
+
+## Tech Stack
+
+- React
+- JavaScript
+- HTML
+- CSS
+- Vite
+- Wikimedia APIs
+
+
+
+This started as a regular HTML, CSS, and JavaScript project. I later rebuilt it in React to get more comfortable with components, props, state management, hooks, and handling API data.
+
+The idea was to make something interactive rather than another basic API-based project. There was also quite a bit of experimenting with CSS positioning, animations, and dynamically updating the UI.
+
+Try starting with a random topic and see how far you can get from it.
