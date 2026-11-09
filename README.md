@@ -1,5 +1,12 @@
 # Wikipedia Rabbit Hole
 
+<img width="1414" height="766" alt="Screenshot 2026-11-09 at 8 11 15 PM" src="https://github.com/user-attachments/assets/6728e7fa-e553-4ddd-a0e7-fc96fd6d2c6a" />
+
+## Live preview
+Vercel: https://wikipedia-rabbit-hole-react.vercel.app/
+
+##
+
 Wikipedia Rabbit Hole is a browser game built with React, JavaScript, and CSS. The idea came from the way you can start reading one Wikipedia article and somehow end up on a completely unrelated topic after following links for a while.
 
 I wanted to turn that experience into a game.
